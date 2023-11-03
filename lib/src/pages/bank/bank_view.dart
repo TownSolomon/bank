@@ -28,7 +28,7 @@ class BankPage extends StatelessWidget {
           onRefresh: logic.onRefresh,
           onLoading: logic.onLoading,
           length: logic.list.length,
-          delegate: logic.delegate1,
+          delegate: logic.delegate,
           crossAxisCount: 1,
         )),
       ),
