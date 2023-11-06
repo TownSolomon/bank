@@ -1,3 +1,4 @@
+import 'package:bank/src/enums/bank.dart';
 import 'package:bank/src/models/page_info.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -28,21 +29,38 @@ class BankModel {
   @JsonKey(name: 'is_credible', defaultValue: false)
   bool isCredible;
   ImageModel icon;
-  @JsonKey(name: 'interest_rates', defaultValue: [])
-  List<InterestRateModel> interestRates;
+  @JsonKey(name: 'interest_rate_groups', defaultValue: [])
+  List<InterestRateGroupModel> interestRateGroups;
 
   BankModel({
     required this.id,
     required this.label,
     required this.isCredible,
     required this.icon,
-    required this.interestRates,
+    required this.interestRateGroups,
   });
 
   factory BankModel.fromJson(Map<String, dynamic> json) =>
       _$BankModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$BankModelToJson(this);
+}
+
+@JsonSerializable()
+class InterestRateGroupModel {
+  RateType type;
+  @JsonKey(name: 'interest_rates', defaultValue: [])
+  List<InterestRateModel> interestRates;
+
+  InterestRateGroupModel({
+    required this.type,
+    required this.interestRates,
+  });
+
+  factory InterestRateGroupModel.fromJson(Map<String, dynamic> json) =>
+      _$InterestRateGroupModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$InterestRateGroupModelToJson(this);
 }
 
 @JsonSerializable()

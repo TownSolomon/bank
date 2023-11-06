@@ -12,8 +12,9 @@ class Bank extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<InterestRateModel> interestRates = bankModel.interestRates;
-    InterestRateModel interestRate = interestRates.firstOrNull!;
+    List<InterestRateGroupModel> interestRateGroupModels = bankModel.interestRateGroups;
+    InterestRateGroupModel interestRateGroupModel = interestRateGroupModels.firstOrNull!;
+    InterestRateModel interestRateModel = interestRateGroupModel.interestRates.firstOrNull!;
     return Scaffold(
       // extendBody: true,
       // extendBodyBehindAppBar: true,
@@ -24,8 +25,8 @@ class Bank extends StatelessWidget {
         slivers: [
           SliverToBoxAdapter(
             child: ListTile(
-              title: Text(interestRate.label),
-              trailing: Text(interestRate.rate.toString()),
+              title: Text(interestRateModel.label),
+              trailing: Text(interestRateModel.rate.toString()),
             ),
           ),
         ],

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:waterfall_flow/waterfall_flow.dart';
 
-import '../enums/feedback.dart';
+import '../enums/load.dart';
 
 class ObxSmartRefresher extends StatefulWidget {
   final bool initialRefresh;

@@ -1,4 +1,4 @@
-import 'package:bank/src/enums/feedback.dart';
+import 'package:bank/src/enums/load.dart';
 import 'package:bank/src/models/bank.dart';
 import 'package:bank/src/models/page_info.dart';
 import 'package:bank/src/utils/toaster.dart';
@@ -59,7 +59,7 @@ class BankLogic extends GetxController {
   Widget delegate(int index) {
     BankModel bankModel = list.elementAt(index);
     return InkWell(
-      onTap: () => Get.to(Bank(bankModel: bankModel)),
+      onTap: () => Get.to(() => Bank(bankModel: bankModel)),
       child: Card(
         margin: EdgeInsets.symmetric(horizontal: 5.r, vertical: 1.r),
         elevation: 1.r,
