@@ -2,6 +2,8 @@ import 'package:bank/src/models/bank.dart';
 import 'package:bank/src/widgets/titlebar.dart';
 import 'package:flutter/material.dart';
 
+import '../enums/bank.dart';
+
 class Bank extends StatelessWidget {
   final BankModel bankModel;
 
@@ -12,9 +14,46 @@ class Bank extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<InterestRateGroupModel> interestRateGroupModels = bankModel.interestRateGroups;
-    InterestRateGroupModel interestRateGroupModel = interestRateGroupModels.firstOrNull!;
-    InterestRateModel interestRateModel = interestRateGroupModel.interestRates.firstOrNull!;
+    List<InterestRateGroupModel> groups = bankModel.interestRateGroups;
+
+    var slivers = <Widget>[];
+    for (InterestRateGroupModel group in groups) {
+      RateType type = group.type;
+      String label = group.label;
+      List<InterestRateModel> interestRates = group.interestRates;
+
+      slivers.add(
+        SliverToBoxAdapter(
+          child: ListTile(
+            title: Center(
+              child: Text(
+                label,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            titleAlignment: ListTileTitleAlignment.titleHeight,
+          ),
+        ),
+      );
+      for(InterestRateModel interestRate in interestRates){
+        slivers.add(
+          SliverToBoxAdapter(
+            child: ListTile(
+              title: Text(interestRate.label),
+              trailing: Text(interestRate.rate.toString()),
+            ),
+          ),
+        );
+      }
+      slivers.add(
+        const SliverToBoxAdapter(
+          child: Divider(),
+        ),
+      );
+    }
+
     return Scaffold(
       // extendBody: true,
       // extendBodyBehindAppBar: true,
@@ -22,14 +61,7 @@ class Bank extends StatelessWidget {
         title: bankModel.label,
       ),
       body: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: ListTile(
-              title: Text(interestRateModel.label),
-              trailing: Text(interestRateModel.rate.toString()),
-            ),
-          ),
-        ],
+        slivers: slivers,
       ),
     );
   }

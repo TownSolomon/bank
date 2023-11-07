@@ -16,7 +16,7 @@ class ErrorResponse {
   });
 
   static ErrorResponse fromError(DioException e) {
-    if (e.response != null) {
+    if (e.response != null && e.response!.data is Map<String, dynamic>) {
       return ErrorResponse.fromJson(e.response!.data);
     }
 

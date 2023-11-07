@@ -44,6 +44,7 @@ InterestRateGroupModel _$InterestRateGroupModelFromJson(
         Map<String, dynamic> json) =>
     InterestRateGroupModel(
       type: $enumDecode(_$RateTypeEnumMap, json['type']),
+      label: json['label'] as String,
       interestRates: (json['interest_rates'] as List<dynamic>?)
               ?.map(
                   (e) => InterestRateModel.fromJson(e as Map<String, dynamic>))
@@ -55,6 +56,7 @@ Map<String, dynamic> _$InterestRateGroupModelToJson(
         InterestRateGroupModel instance) =>
     <String, dynamic>{
       'type': _$RateTypeEnumMap[instance.type]!,
+      'label': instance.label,
       'interest_rates': instance.interestRates,
     };
 

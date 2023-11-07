@@ -49,11 +49,13 @@ class BankModel {
 @JsonSerializable()
 class InterestRateGroupModel {
   RateType type;
+  String label;
   @JsonKey(name: 'interest_rates', defaultValue: [])
   List<InterestRateModel> interestRates;
 
   InterestRateGroupModel({
     required this.type,
+    required this.label,
     required this.interestRates,
   });
 
