@@ -1,8 +1,10 @@
 import 'package:bank/src/pages/bank/bank_view.dart';
+import 'package:bank/src/pages/interestrate/interestrate_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../widgets/bottombar.dart';
+import '../../widgets/drawer_view.dart';
 import 'home_logic.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,17 +16,17 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       key: logic.homeScaffoldKey,
       backgroundColor: const Color(0xFFFFFFFF),
-      // drawer: DrawerView(
-      //   closeDrawer: logic.closeDrawer,
-      // ),
+      drawer: DrawerView(
+        closeDrawer: logic.closeDrawer,
+      ),
       body: Obx(() => Column(
             children: [
               Expanded(
                 child: IndexedStack(
                   index: logic.index.value,
-                  children: [
-                    const BankPage(),
-                    Container(),
+                  children: const [
+                    BankPage(),
+                    InterestRatePage(),
                   ],
                 ),
               ),

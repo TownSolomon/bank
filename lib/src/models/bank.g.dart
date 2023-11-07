@@ -20,6 +20,37 @@ Map<String, dynamic> _$ListBankResponseToJson(ListBankResponse instance) =>
       'list': instance.list,
     };
 
+ListInterestRateResponse _$ListInterestRateResponseFromJson(
+        Map<String, dynamic> json) =>
+    ListInterestRateResponse(
+      page: PageResponse.fromJson(json['page'] as Map<String, dynamic>),
+      list: (json['list'] as List<dynamic>)
+          .map((e) => InterestRateItemModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$ListInterestRateResponseToJson(
+        ListInterestRateResponse instance) =>
+    <String, dynamic>{
+      'page': instance.page,
+      'list': instance.list,
+    };
+
+InterestRateItemModel _$InterestRateItemModelFromJson(
+        Map<String, dynamic> json) =>
+    InterestRateItemModel(
+      interestRate: InterestRateModel.fromJson(
+          json['interest_rate'] as Map<String, dynamic>),
+      bank: BankModel.fromJson(json['bank'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$InterestRateItemModelToJson(
+        InterestRateItemModel instance) =>
+    <String, dynamic>{
+      'interest_rate': instance.interestRate,
+      'bank': instance.bank,
+    };
+
 BankModel _$BankModelFromJson(Map<String, dynamic> json) => BankModel(
       id: json['id'] as int,
       label: json['label'] as String,

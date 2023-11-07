@@ -23,6 +23,39 @@ class ListBankResponse {
 }
 
 @JsonSerializable()
+class ListInterestRateResponse {
+  PageResponse page;
+  List<InterestRateItemModel> list;
+
+  ListInterestRateResponse({
+    required this.page,
+    required this.list,
+  });
+
+  factory ListInterestRateResponse.fromJson(Map<String, dynamic> json) =>
+      _$ListInterestRateResponseFromJson(json);
+
+  Map<String, dynamic> toJson() => _$ListInterestRateResponseToJson(this);
+}
+
+@JsonSerializable()
+class InterestRateItemModel {
+  @JsonKey(name: 'interest_rate')
+  InterestRateModel interestRate;
+  BankModel bank;
+
+  InterestRateItemModel({
+    required this.interestRate,
+    required this.bank,
+  });
+
+  factory InterestRateItemModel.fromJson(Map<String, dynamic> json) =>
+      _$InterestRateItemModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$InterestRateItemModelToJson(this);
+}
+
+@JsonSerializable()
 class BankModel {
   int id;
   String label;
