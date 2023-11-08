@@ -18,14 +18,13 @@ class InterestRateLogic extends GetxController {
 
   Future<bool> onRefresh() async {
     try {
+      page = page.init();
       dio.Response response = await bankApiClient.listInterestrates(page);
       ListInterestRateResponse listBankResponse =
           ListInterestRateResponse.fromJson(response.data);
       hasMore = listBankResponse.page.hasMore;
       list
         ..clear()
-        ..addAll(listBankResponse.list)
-        ..addAll(listBankResponse.list)
         ..addAll(listBankResponse.list);
       return true;
     } on DioException catch (e) {
@@ -40,7 +39,7 @@ class InterestRateLogic extends GetxController {
     }
 
     try {
-      dio.Response response = await bankApiClient.listBank(page.nextPage());
+      dio.Response response = await bankApiClient.listInterestrates(page.nextPage());
       ListInterestRateResponse listBankResponse =
           ListInterestRateResponse.fromJson(response.data);
       hasMore = listBankResponse.page.hasMore;
@@ -55,17 +54,61 @@ class InterestRateLogic extends GetxController {
 
   Widget delegate(int index) {
     InterestRateItemModel model = list.elementAt(index);
+
+    return  Column(
+      children: [
+        Container(
+          margin: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
+          child: Row(
+            children: [
+              Expanded(
+                flex: 50,
+                child: Text(model.bank.label),
+              ),
+              Expanded(
+                flex: 40,
+                child: Text(model.interestRate.label),
+              ),
+              Expanded(
+                flex: 20,
+                child: Text(
+                  "${model.interestRate.rate.toStringAsFixed(2)}%",
+                  textAlign: TextAlign.right,
+                ),
+              ),
+            ],
+          ),
+        ),
+        Divider(),
+      ],
+    );
     return InkWell(
       child: Card(
         margin: EdgeInsets.symmetric(horizontal: 5.r, vertical: 1.r),
         elevation: 1.r,
         clipBehavior: Clip.antiAlias,
-        child: ListTile(
-          leading: Text(model.bank.label),
-          title: Text(model.interestRate.label),
-          trailing: Text(model.interestRate.rate.toStringAsFixed(2)),
-          minLeadingWidth: 50.w,
+        child: Row(
+          children: [
+            Expanded(
+              flex: 50,
+              child: Text(model.bank.label),
+            ),
+            Expanded(
+              flex: 50,
+              child: Text(model.interestRate.label),
+            ),
+            Expanded(
+              flex: 50,
+              child: Text(model.interestRate.rate.toStringAsFixed(2)),
+            ),
+          ],
         ),
+        // child: ListTile(
+        //   leading: Text(model.bank.label),
+        //   title: Text(model.interestRate.label),
+        //   trailing: Text(model.interestRate.rate.toStringAsFixed(2)),
+        //   minLeadingWidth: 50.w,
+        // ),
       ),
     );
   }

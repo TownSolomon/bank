@@ -2,7 +2,9 @@ import 'package:bank/src/utils/rooter.dart';
 import 'package:bank/src/widgets/svg_picture.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
+import '../pages/home/home_logic.dart';
 import '../utils/theme.dart';
 
 class EnterpriseTitleBar extends StatelessWidget
@@ -85,6 +87,41 @@ class EnterpriseTitleBar extends StatelessWidget
         ),
       );
 
+  EnterpriseTitleBar.homeTitle({
+    Key? key,
+    required String title,
+    TextStyle? tileStyle,
+    TextStyle? subTStyle,
+    Function()? onAvatarTap,
+    List<Widget> actions = const [],
+    Widget? titleView,
+    Widget? subTitleView,
+  })  : height = 50.h,
+        topPadding = 0,
+        backgroundColor = null,
+        right = null,
+        showShadow = false,
+        left = Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SvgButton(
+              assetName: "assets/svg/bars_line.svg",
+              onTap: Get.find<HomeLogic>().openDrawer,
+            ),
+          ],
+        ),
+        center = Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              title,
+              style: ThemeUtils.appBarTitleTextStyle(),
+            ),
+          ],
+        ),
+        super(key: key);
+
   EnterpriseTitleBar.back({
     Key? key,
     String? title,
@@ -118,7 +155,8 @@ class EnterpriseTitleBar extends StatelessWidget
                                 style: ThemeUtils.appBarTitleTextStyle(),
                               )
                             : const SvgIcon(
-                                assetName: "assets/svg/arrow_left_line.svg"),
+                                assetName: "assets/svg/arrow_left_line.svg",
+                              ),
                       ),
                     ),
                   ),

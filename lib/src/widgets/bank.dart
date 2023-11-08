@@ -44,7 +44,7 @@ class Bank extends StatelessWidget {
           SliverToBoxAdapter(
             child: ListTile(
               title: Text(interestRate.label),
-              trailing: Text(interestRate.rate.toString()),
+              trailing: Text(interestRate.rate.toStringAsFixed(2)),
             ),
           ),
         );

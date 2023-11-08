@@ -20,6 +20,11 @@ class PageRequest {
     return this;
   }
 
+  PageRequest init() {
+    current = 1;
+    return this;
+  }
+
   factory PageRequest.fromJson(Map<String, dynamic> json) =>
       _$PageRequestFromJson(json);
 

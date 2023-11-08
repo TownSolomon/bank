@@ -12,9 +12,8 @@ class BankPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final logic = Get.find<BankLogic>();
     return Scaffold(
-      appBar: EnterpriseTitleBar.back(
+      appBar: EnterpriseTitleBar.homeTitle(
         title: "银行列表",
-        leftTile: "",
       ),
       // key: logic.scaffoldKey,
       body: NestedScrollView(

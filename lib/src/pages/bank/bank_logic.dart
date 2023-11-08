@@ -21,6 +21,7 @@ class BankLogic extends GetxController {
 
   Future<bool> onRefresh() async {
     try {
+      page = page.init();
       dio.Response response = await bankApiClient.listBank(page);
       ListBankResponse listBankResponse =
           ListBankResponse.fromJson(response.data);

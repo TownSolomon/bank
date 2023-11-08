@@ -1,6 +1,7 @@
 import 'package:bank/src/pages/bank/bank_logic.dart';
 import 'package:bank/src/pages/interestrate/interestrate_logic.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../widgets/smart_refresher.dart';
@@ -19,9 +20,54 @@ class InterestRatePage extends StatelessWidget {
       ),
       // key: logic.scaffoldKey,
       body: NestedScrollView(
-        floatHeaderSlivers: false,
+        floatHeaderSlivers: true,
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
           return [
+            SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
+                    child: const Row(
+                      children: [
+                        Expanded(
+                          flex: 50,
+                          child: Text(
+                            "银行",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 40,
+                          child: Text(
+                            "时间",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 20,
+                          child: Text(
+                            "利率",
+                            textAlign: TextAlign.right,
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Divider(
+                    height: 1,
+                    thickness: 2,
+                  ),
+                ],
+              ),
+            ),
           ];
         },
         body: Obx(() => ObxSmartRefresher(
