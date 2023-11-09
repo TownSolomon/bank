@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../utils/theme.dart';
 
-class BottomBar extends StatelessWidget {
+class BottomBar extends StatefulWidget {
   const BottomBar({
     Key? key,
     this.index = 0,
@@ -13,17 +14,21 @@ class BottomBar extends StatelessWidget {
   final List<BottomBarItem> items;
 
   @override
+  State<StatefulWidget> createState() => _BottomBarState();
+}
+
+class _BottomBarState extends State<BottomBar> {
+  @override
   Widget build(BuildContext context) {
+    var items = widget.items;
     return Container(
       height: 45.h,
       decoration: BoxDecoration(
         color: ThemeUtils.appBarColor(),
         boxShadow: [
           BoxShadow(
-            color: const Color(0xFF000000).withOpacity(0.12),
-            offset: Offset(0, -1.h),
-            blurRadius: 4.r,
-            spreadRadius: 0,
+            color: const Color(0xFF000000).withOpacity(0.5),
+            offset: const Offset(0, -0.1),
           ),
         ],
       ),
@@ -55,7 +60,8 @@ class BottomBar extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 15.r,
                     fontWeight:
-                        i == index ? FontWeight.bold : FontWeight.normal,
+                        i == widget.index ? FontWeight.bold : FontWeight.normal,
+                    color: i == widget.index ? ThemeUtils.themeColor() : null,
                   ),
                 ),
               ),

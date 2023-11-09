@@ -1,5 +1,6 @@
 import 'package:bank/src/pages/bank/bank_logic.dart';
 import 'package:bank/src/pages/interestrate/interestrate_logic.dart';
+import 'package:bank/src/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -14,10 +15,10 @@ class InterestRatePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final logic = Get.find<InterestRateLogic>();
     return Scaffold(
-      appBar: EnterpriseTitleBar.back(
+      appBar: EnterpriseTitleBar.homeTitle(
         title: "利率排行",
-        leftTile: "",
       ),
+      backgroundColor: ThemeUtils.backColor(),
       // key: logic.scaffoldKey,
       body: NestedScrollView(
         floatHeaderSlivers: true,
@@ -63,7 +64,7 @@ class InterestRatePage extends StatelessWidget {
                   ),
                   const Divider(
                     height: 1,
-                    thickness: 2,
+                    thickness: 1,
                   ),
                 ],
               ),

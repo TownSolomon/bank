@@ -1,6 +1,7 @@
 import 'package:bank/src/enums/load.dart';
 import 'package:bank/src/models/bank.dart';
 import 'package:bank/src/models/page_info.dart';
+import 'package:bank/src/utils/theme.dart';
 import 'package:bank/src/utils/toaster.dart';
 import 'package:bank/src/widgets/bank.dart';
 import 'package:bank/src/widgets/svg_picture.dart';
@@ -61,24 +62,27 @@ class BankLogic extends GetxController {
     BankModel bankModel = list.elementAt(index);
     return InkWell(
       onTap: () => Get.to(() => Bank(bankModel: bankModel)),
-      child: Card(
-        margin: EdgeInsets.symmetric(horizontal: 5.r, vertical: 1.r),
-        elevation: 1.r,
-        clipBehavior: Clip.antiAlias,
-        child: ListTile(
-          leading: SizedBox(
-            width: 50.w,
-            child: CacheImage(
-              url: bankModel.icon.url.medium,
-              fit: BoxFit.fitWidth,
+      child: Container(
+        color: ThemeUtils.backColor(),
+        child: Column(
+          children: [
+            ListTile(
+              leading: SizedBox(
+                width: 50.w,
+                child: CacheImage(
+                  url: bankModel.icon.url.medium,
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+              title: Text(bankModel.label),
+              trailing: const SvgIcon(
+                assetName: "assets/svg/shield-check_line.svg",
+                color: Colors.green,
+              ),
+              minLeadingWidth: 50.w,
             ),
-          ),
-          title: Text(bankModel.label),
-          trailing: const SvgIcon(
-            assetName: "assets/svg/shield-check_line.svg",
-            color: Colors.green,
-          ),
-          minLeadingWidth: 50.w,
+            Divider(),
+          ],
         ),
       ),
     );

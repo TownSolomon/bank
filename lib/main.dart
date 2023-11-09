@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bank/src/app.dart';
+import 'package:bank/src/commons/config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ Future<void> main() async {
           Zone.current.handleUncaughtError(details.exception, details.stack!);
         }
       };
+      AppLifeCycleDelegate();
       runApp(const App());
     },
     (Object error, StackTrace stackTrace) {

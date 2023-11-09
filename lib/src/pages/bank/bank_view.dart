@@ -2,6 +2,7 @@ import 'package:bank/src/pages/bank/bank_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../utils/theme.dart';
 import '../../widgets/smart_refresher.dart';
 import '../../widgets/titlebar.dart';
 
@@ -12,6 +13,7 @@ class BankPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final logic = Get.find<BankLogic>();
     return Scaffold(
+      backgroundColor: ThemeUtils.backColor(),
       appBar: EnterpriseTitleBar.homeTitle(
         title: "银行列表",
       ),

@@ -99,17 +99,9 @@ class EnterpriseTitleBar extends StatelessWidget
   })  : height = 50.h,
         topPadding = 0,
         backgroundColor = null,
+        left = null,
         right = null,
         showShadow = false,
-        left = Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SvgButton(
-              assetName: "assets/svg/bars_line.svg",
-              onTap: Get.find<HomeLogic>().openDrawer,
-            ),
-          ],
-        ),
         center = Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.center,

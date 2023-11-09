@@ -1,10 +1,11 @@
 import 'package:bank/src/pages/bank/bank_view.dart';
 import 'package:bank/src/pages/interestrate/interestrate_view.dart';
+import 'package:bank/src/pages/setting/setting_view.dart';
+import 'package:bank/src/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../widgets/bottombar.dart';
-import '../../widgets/drawer_view.dart';
 import 'home_logic.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,10 +16,7 @@ class HomePage extends StatelessWidget {
     final logic = Get.find<HomeLogic>();
     return Scaffold(
       key: logic.homeScaffoldKey,
-      backgroundColor: const Color(0xFFFFFFFF),
-      drawer: DrawerView(
-        closeDrawer: logic.closeDrawer,
-      ),
+      backgroundColor: ThemeUtils.backColor(),
       body: Obx(() => Column(
             children: [
               Expanded(
@@ -27,6 +25,7 @@ class HomePage extends StatelessWidget {
                   children: const [
                     BankPage(),
                     InterestRatePage(),
+                    SettingPage(),
                   ],
                 ),
               ),
@@ -39,6 +38,10 @@ class HomePage extends StatelessWidget {
                   ),
                   BottomBarItem(
                     label: "利率",
+                    onClick: (i) => logic.switchTab(i),
+                  ),
+                  BottomBarItem(
+                    label: "设置",
                     onClick: (i) => logic.switchTab(i),
                   ),
                 ],
