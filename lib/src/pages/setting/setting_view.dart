@@ -30,26 +30,32 @@ class SettingPage extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           SliverList(
-            delegate: SliverChildBuilderDelegate((context, int index) {
-              Option option = options.elementAt(index);
-              return ListTile(
-                contentPadding:
-                    EdgeInsets.symmetric(vertical: 10.h, horizontal: 16.w),
-                leading: SvgIcon(
-                  assetName: option.svg!,
-                  width: 22.r,
-                  height: 22.r,
-                ),
-                title: Text(
-                  option.label,
-                  style: TextStyle(
-                    // fontSize: 17.sp,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-                onTap: option.onTap,
-              );
-            }, childCount: options.length),
+            delegate: SliverChildBuilderDelegate(
+              (context, int index) {
+                Option option = options.elementAt(index);
+                return Column(
+                  children: [
+                    ListTile(
+                      leading: SvgIcon(
+                        assetName: option.svg!,
+                        width: 22.r,
+                        height: 22.r,
+                      ),
+                      title: Text(
+                        option.label,
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      onTap: option.onTap,
+                    ),
+                    const Divider(),
+                  ],
+                );
+              },
+              childCount: options.length,
+            ),
           ),
         ],
       ),
