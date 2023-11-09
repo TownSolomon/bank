@@ -16,10 +16,14 @@ class InterestRateLogic extends GetxController {
   var page = PageRequest(current: 1, size: 10);
   var list = <InterestRateItemModel>[].obs;
 
+  int? rateType;
+  int? rateDuration;
+
   Future<bool> onRefresh() async {
     try {
       page = page.init();
-      dio.Response response = await bankApiClient.listInterestrates(page);
+      dio.Response response =
+          await bankApiClient.listInterestrates(page, getParams());
       ListInterestRateResponse listBankResponse =
           ListInterestRateResponse.fromJson(response.data);
       hasMore = listBankResponse.page.hasMore;
@@ -39,7 +43,8 @@ class InterestRateLogic extends GetxController {
     }
 
     try {
-      dio.Response response = await bankApiClient.listInterestrates(page.nextPage());
+      dio.Response response =
+          await bankApiClient.listInterestrates(page.nextPage(), getParams());
       ListInterestRateResponse listBankResponse =
           ListInterestRateResponse.fromJson(response.data);
       hasMore = listBankResponse.page.hasMore;
@@ -52,10 +57,17 @@ class InterestRateLogic extends GetxController {
     }
   }
 
+  Map<String, dynamic> getParams() {
+    var result = <String, dynamic>{};
+    result.addIf(rateType != null, "type", rateType);
+    result.addIf(rateDuration != null, "duration", rateDuration);
+    return result;
+  }
+
   Widget delegate(int index) {
     InterestRateItemModel model = list.elementAt(index);
 
-    return  Column(
+    return Column(
       children: [
         Container(
           margin: EdgeInsets.symmetric(vertical: 10.h, horizontal: 20.w),
@@ -81,35 +93,6 @@ class InterestRateLogic extends GetxController {
         ),
         Divider(),
       ],
-    );
-    return InkWell(
-      child: Card(
-        margin: EdgeInsets.symmetric(horizontal: 5.r, vertical: 1.r),
-        elevation: 1.r,
-        clipBehavior: Clip.antiAlias,
-        child: Row(
-          children: [
-            Expanded(
-              flex: 50,
-              child: Text(model.bank.label),
-            ),
-            Expanded(
-              flex: 50,
-              child: Text(model.interestRate.label),
-            ),
-            Expanded(
-              flex: 50,
-              child: Text(model.interestRate.rate.toStringAsFixed(2)),
-            ),
-          ],
-        ),
-        // child: ListTile(
-        //   leading: Text(model.bank.label),
-        //   title: Text(model.interestRate.label),
-        //   trailing: Text(model.interestRate.rate.toStringAsFixed(2)),
-        //   minLeadingWidth: 50.w,
-        // ),
-      ),
     );
   }
 }

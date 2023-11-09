@@ -10,8 +10,14 @@ class BankApiClient with Client {
     return httpClient.get('/bank/v1/banks', queryParameters: page.toJson());
   }
 
-  Future<Response> listInterestrates(PageRequest page) async {
-    return httpClient.get('/bank/v1/interestrates', queryParameters: page.toJson());
+  Future<Response> listInterestrates(
+    PageRequest page,
+    Map<String, dynamic> params,
+  ) async {
+    Map<String, dynamic> pageParams = page.toJson();
+    pageParams.addAll(params);
+    return httpClient.get('/bank/v1/interestrates',
+        queryParameters: pageParams);
   }
 
   Future<Response> errorBank(PageRequest page) async {
