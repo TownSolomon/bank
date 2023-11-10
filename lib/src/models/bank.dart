@@ -102,11 +102,13 @@ class InterestRateGroupModel {
 class InterestRateModel {
   int id;
   String label;
+  RateType type;
   double rate;
 
   InterestRateModel({
     required this.id,
     required this.label,
+    required this.type,
     required this.rate,
   });
 

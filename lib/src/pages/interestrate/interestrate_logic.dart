@@ -74,18 +74,21 @@ class InterestRateLogic extends GetxController {
           child: Row(
             children: [
               Expanded(
-                flex: 50,
+                flex: 30,
                 child: Text(model.bank.label),
               ),
               Expanded(
-                flex: 40,
-                child: Text(model.interestRate.label),
+                flex: 30,
+                child: Text(model.interestRate.type.label.tr),
               ),
               Expanded(
                 flex: 20,
+                child: Text(model.interestRate.label),
+              ),
+              Expanded(
+                flex: 12,
                 child: Text(
                   "${model.interestRate.rate.toStringAsFixed(2)}%",
-                  textAlign: TextAlign.right,
                 ),
               ),
             ],

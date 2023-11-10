@@ -104,6 +104,7 @@ InterestRateModel _$InterestRateModelFromJson(Map<String, dynamic> json) =>
     InterestRateModel(
       id: json['id'] as int,
       label: json['label'] as String,
+      type: $enumDecode(_$RateTypeEnumMap, json['type']),
       rate: (json['rate'] as num).toDouble(),
     );
 
@@ -111,5 +112,6 @@ Map<String, dynamic> _$InterestRateModelToJson(InterestRateModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'label': instance.label,
+      'type': _$RateTypeEnumMap[instance.type]!,
       'rate': instance.rate,
     };

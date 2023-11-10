@@ -16,6 +16,32 @@ class InterestRatePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final logic = Get.find<InterestRateLogic>();
 
+    List<DropdownMenuItem<int>> rateTypeItems = [
+      DropdownMenuItem<int>(
+        value: null,
+        child: Text(
+          "全部",
+          style: TextStyle(
+            fontSize: 12.sp,
+          ),
+        ),
+      )
+    ];
+
+    rateTypeItems.addAll(
+      RateType.values
+          .map((RateType item) => DropdownMenuItem<int>(
+                value: item.value,
+                child: Text(
+                  item.label.tr,
+                  style: TextStyle(
+                    fontSize: 12.sp,
+                  ),
+                ),
+              ))
+          .toList(),
+    );
+
     return Scaffold(
       appBar: EnterpriseTitleBar.homeTitle(
         title: "利率排行",
@@ -33,17 +59,7 @@ class InterestRatePage extends StatelessWidget {
                     children: [
                       DropDownButton(
                         title: "类型",
-                        items: RateType.values
-                            .map((RateType item) => DropdownMenuItem<int>(
-                                  value: item.value,
-                                  child: Text(
-                                    item.label,
-                                    style: TextStyle(
-                                      fontSize: 14.sp,
-                                    ),
-                                  ),
-                                ))
-                            .toList(),
+                        items: rateTypeItems,
                         onChanged: (int? value) {
                           logic.rateType = value;
                           logic.onRefresh();
@@ -57,7 +73,7 @@ class InterestRatePage extends StatelessWidget {
                                   child: Text(
                                     item.label.tr,
                                     style: TextStyle(
-                                      fontSize: 14.sp,
+                                      fontSize: 12.sp,
                                     ),
                                   ),
                                 ))
@@ -77,7 +93,7 @@ class InterestRatePage extends StatelessWidget {
                     child: const Row(
                       children: [
                         Expanded(
-                          flex: 50,
+                          flex: 30,
                           child: Text(
                             "银行",
                             style: TextStyle(
@@ -86,9 +102,9 @@ class InterestRatePage extends StatelessWidget {
                           ),
                         ),
                         Expanded(
-                          flex: 40,
+                          flex: 30,
                           child: Text(
-                            "时间",
+                            "类型",
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                             ),
@@ -97,8 +113,16 @@ class InterestRatePage extends StatelessWidget {
                         Expanded(
                           flex: 20,
                           child: Text(
+                            "时间",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 12,
+                          child: Text(
                             "利率",
-                            textAlign: TextAlign.right,
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                             ),
@@ -156,7 +180,7 @@ class _DropDownButtonState extends State<DropDownButton> {
         hint: Text(
           widget.title,
           style: TextStyle(
-            fontSize: 14.sp,
+            fontSize: 13.sp,
           ),
         ),
         items: widget.items,
@@ -167,13 +191,17 @@ class _DropDownButtonState extends State<DropDownButton> {
             widget.onChanged.call(value);
           });
         },
-        buttonStyleData: const ButtonStyleData(
-          padding: EdgeInsets.symmetric(horizontal: 16),
-          height: 40,
-          width: 140,
+        buttonStyleData: ButtonStyleData(
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
+          height: 50.h,
+          width: 140.w,
+          decoration: BoxDecoration(
+            color: ThemeUtils.backColor(),
+          ),
         ),
-        menuItemStyleData: const MenuItemStyleData(
-          height: 40,
+        alignment: AlignmentDirectional.center,
+        menuItemStyleData: MenuItemStyleData(
+          height: 50.h,
         ),
       ),
     );

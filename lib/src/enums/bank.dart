@@ -24,7 +24,7 @@ enum RateDuration {
   oneYears(3, "oneYears"),
   twoYears(4, "twoYears"),
   threeYears(5, "threeYears"),
-  fiveYears(5, "fiveYears"),
+  fiveYears(6, "fiveYears"),
   ;
 
   final int value;

@@ -7,7 +7,7 @@ import 'languages/zh_cn.dart';
 
 class TranslationService extends Translations {
   static Locale? get locale => Get.deviceLocale;
-  static const fallbackLocale = Locale('en', 'US');
+  static const fallbackLocale = Locale('zh', 'CN');
   static const locales = <int, Locale>{
     1: Locale('en', 'US'),
     2: Locale('zh', 'CN'),
