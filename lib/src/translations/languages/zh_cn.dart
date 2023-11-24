@@ -5,4 +5,11 @@ const Map<String, String> zhCN = {
   "currentRegular": "定活两便",
   "agreement": "协定存款",
   "notion": "通知存款",
+  "other": "其他",
+  "threeMonths": "三个月",
+  "sixMonths": "六个月",
+  "oneYears": "一年",
+  "twoYears": "两年",
+  "threeYears": "三年",
+  "fiveYears": "五年",
 };

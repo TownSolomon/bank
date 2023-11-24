@@ -54,11 +54,11 @@ class _BottomBarState extends State<BottomBar> {
             alignment: Alignment.center,
             children: [
               Positioned(
-                top: 10.h,
+                top: 8.h,
                 child: Text(
                   item.label,
                   style: TextStyle(
-                    fontSize: 15.r,
+                    fontSize: 15.sp,
                     fontWeight:
                         i == widget.index ? FontWeight.bold : FontWeight.normal,
                     color: i == widget.index ? ThemeUtils.themeColor() : null,

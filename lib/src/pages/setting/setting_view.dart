@@ -12,13 +12,28 @@ class SettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final options = <Option>[
       Option(
-        label: "联系我们",
-        svg: "assets/svg/link-simple_line.svg",
+        label: "暗色模式",
+        svg: "assets/svg/lightbulb_line.svg",
+        // onTap: AppNavigator.startSettingAccount,
+      ),
+      Option(
+        label: "多语言",
+        svg: "assets/svg/language_line.svg",
+        // onTap: AppNavigator.startSettingAccount,
+      ),
+      Option(
+        label: "用户协议",
+        svg: "assets/svg/handshake_line.svg",
+        // onTap: AppNavigator.startSettingAccount,
+      ),
+      Option(
+        label: "隐私政策",
+        svg: "assets/svg/user-shield_line.svg",
         // onTap: AppNavigator.startSettingAccount,
       ),
       Option(
         label: "联系我们",
-        svg: "assets/svg/link-simple_line.svg",
+        svg: "assets/svg/comments_line.svg",
         // onTap: AppNavigator.startSettingAccount,
       ),
     ];
@@ -34,12 +49,14 @@ class SettingPage extends StatelessWidget {
               (context, int index) {
                 Option option = options.elementAt(index);
                 return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     ListTile(
                       leading: SvgIcon(
                         assetName: option.svg!,
-                        width: 22.r,
-                        height: 22.r,
+                        width: 29.r,
+                        height: 29.r,
                       ),
                       title: Text(
                         option.label,

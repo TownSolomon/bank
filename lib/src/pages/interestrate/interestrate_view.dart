@@ -20,9 +20,9 @@ class InterestRatePage extends StatelessWidget {
       DropdownMenuItem<int>(
         value: null,
         child: Text(
-          "全部",
+          "全部类型",
           style: TextStyle(
-            fontSize: 12.sp,
+            fontSize: 14.sp,
           ),
         ),
       )
@@ -35,7 +35,33 @@ class InterestRatePage extends StatelessWidget {
                 child: Text(
                   item.label.tr,
                   style: TextStyle(
-                    fontSize: 12.sp,
+                    fontSize: 14.sp,
+                  ),
+                ),
+              ))
+          .toList(),
+    );
+
+    List<DropdownMenuItem<int>> durationTypeItems = [
+      DropdownMenuItem<int>(
+        value: null,
+        child: Text(
+          "全部时长",
+          style: TextStyle(
+            fontSize: 14.sp,
+          ),
+        ),
+      )
+    ];
+
+    durationTypeItems.addAll(
+      RateDuration.values
+          .map((RateDuration item) => DropdownMenuItem<int>(
+                value: item.value,
+                child: Text(
+                  item.label.tr,
+                  style: TextStyle(
+                    fontSize: 14.sp,
                   ),
                 ),
               ))
@@ -66,18 +92,8 @@ class InterestRatePage extends StatelessWidget {
                         },
                       ),
                       DropDownButton(
-                        title: "时间",
-                        items: RateDuration.values
-                            .map((RateDuration item) => DropdownMenuItem<int>(
-                                  value: item.value,
-                                  child: Text(
-                                    item.label.tr,
-                                    style: TextStyle(
-                                      fontSize: 12.sp,
-                                    ),
-                                  ),
-                                ))
-                            .toList(),
+                        title: "时长",
+                        items: durationTypeItems,
                         onChanged: (int? value) {
                           logic.rateDuration = value;
                           logic.onRefresh();
@@ -90,7 +106,7 @@ class InterestRatePage extends StatelessWidget {
                       vertical: 10.h,
                       horizontal: 20.w,
                     ),
-                    child: const Row(
+                    child: Row(
                       children: [
                         Expanded(
                           flex: 30,
@@ -98,6 +114,7 @@ class InterestRatePage extends StatelessWidget {
                             "银行",
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
+                              fontSize: 14.sp,
                             ),
                           ),
                         ),
@@ -107,6 +124,7 @@ class InterestRatePage extends StatelessWidget {
                             "类型",
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
+                              fontSize: 14.sp,
                             ),
                           ),
                         ),
@@ -116,6 +134,7 @@ class InterestRatePage extends StatelessWidget {
                             "时间",
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
+                              fontSize: 14.sp,
                             ),
                           ),
                         ),
@@ -125,6 +144,7 @@ class InterestRatePage extends StatelessWidget {
                             "利率",
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
+                              fontSize: 14.sp,
                             ),
                           ),
                         ),

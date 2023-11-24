@@ -30,8 +30,9 @@ class Bank extends StatelessWidget {
             title: Center(
               child: Text(
                 label,
-                style: const TextStyle(
+                style: TextStyle(
                   fontWeight: FontWeight.bold,
+                  fontSize: 15.sp,
                 ),
               ),
             ),
@@ -39,13 +40,23 @@ class Bank extends StatelessWidget {
           ),
         ),
       );
-      for(InterestRateModel interestRate in interestRates){
+      for (InterestRateModel interestRate in interestRates) {
         slivers.add(
           SliverToBoxAdapter(
             child: ListTile(
               contentPadding: EdgeInsets.symmetric(horizontal: 20.w),
-              title: Text(interestRate.label),
-              trailing: Text(interestRate.rate.toStringAsFixed(2)),
+              title: Text(
+                interestRate.label,
+                style: TextStyle(
+                  fontSize: 14.sp,
+                ),
+              ),
+              trailing: Text(
+                interestRate.rate.toStringAsFixed(2),
+                style: TextStyle(
+                  fontSize: 14.sp,
+                ),
+              ),
             ),
           ),
         );
@@ -58,8 +69,6 @@ class Bank extends StatelessWidget {
     }
 
     return Scaffold(
-      // extendBody: true,
-      // extendBodyBehindAppBar: true,
       appBar: EnterpriseTitleBar.back(
         title: bankModel.label,
       ),

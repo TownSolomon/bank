@@ -16,11 +16,11 @@ class ThemeUtils {
 
   static TextStyle appBarTitleTextStyle() => Get.isDarkMode
       ? TextStyle(
-          fontSize: 18.r,
+          fontSize: 15.sp,
           color: const Color(0xFFFFFFFF),
         )
       : TextStyle(
-          fontSize: 18.r,
+          fontSize: 15.sp,
           color: const Color(0xFF000000),
         );
 

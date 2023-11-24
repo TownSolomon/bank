@@ -74,14 +74,19 @@ class BankLogic extends GetxController {
                   fit: BoxFit.fitWidth,
                 ),
               ),
-              title: Text(bankModel.label),
+              title: Text(
+                bankModel.label,
+                style: TextStyle(
+                  fontSize: 14.sp,
+                ),
+              ),
               trailing: const SvgIcon(
                 assetName: "assets/svg/shield-check_line.svg",
                 color: Colors.green,
               ),
               minLeadingWidth: 50.w,
             ),
-            Divider(),
+            const Divider(),
           ],
         ),
       ),
