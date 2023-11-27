@@ -19,3 +19,33 @@ class TranslationService extends Translations {
         'zh_CN': zhCN,
       };
 }
+
+class Trs {
+  static get splash => 'splash'.tr;
+  static get buffett => 'buffett'.tr;
+  static get ok => 'ok'.tr;
+  static get cancel => 'cancel'.tr;
+  static get languageSetup => 'languageSetup'.tr;
+  static get followSystem => 'followSystem'.tr;
+  static get english => 'english'.tr;
+  static get chinese => 'chinese'.tr;
+  static get lightMode => 'lightMode'.tr;
+  static get darkMode => 'darkMode'.tr;
+  static get contactUs => 'contactUs'.tr;
+  static get bank => 'bank'.tr;
+  static get banks => 'banks'.tr;
+  static get rate => 'rate'.tr;
+  static get setting => 'setting'.tr;
+  static get settingsAndInformation => 'settingsAndInformation'.tr;
+  static get interestRateRanking => 'interestRateRanking'.tr;
+  static get depositType => 'depositType'.tr;
+  static get allDepositType => 'allDepositType'.tr;
+  static get depositDuration => 'depositDuration'.tr;
+  static get allDepositDuration => 'allDepositDuration'.tr;
+  static get website => 'website'.tr;
+  static get wechat => 'wechat'.tr;
+  static get email => 'email'.tr;
+  static get xhs => 'xhs'.tr;
+  static get douyin => 'douyin'.tr;
+  static get twitter => 'twitter'.tr;
+}

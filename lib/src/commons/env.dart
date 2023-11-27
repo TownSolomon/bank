@@ -11,8 +11,8 @@ class Env {
   static bool isGlobal = !isCn;
 
   /// 当前客户端版本
-  static const int versionCode = 101;
-  static const String versionName = "1.1";
+  static const int versionCode = 10101;
+  static const String versionName = "1.1.1";
 
   /// 当前运行平台 自动获取不用修改
   static CustomPlatform get platform => CustomPlatform.getPlatform();

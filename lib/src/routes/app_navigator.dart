@@ -7,4 +7,9 @@ class AppNavigator {
   static void startMain() {
     Get.offAllNamed(AppRoutes.home);
   }
+
+  /// 联系我们页面
+  static void startConnect() {
+    Get.offAllNamed(AppRoutes.connect);
+  }
 }

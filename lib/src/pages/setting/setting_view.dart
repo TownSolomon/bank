@@ -1,8 +1,10 @@
 import 'package:bank/src/pages/setting/setting_logic.dart';
+import 'package:bank/src/translations/translation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../models/option.dart';
+import '../../routes/app_navigator.dart';
 import '../../utils/theme.dart';
 import '../../widgets/svg_picture.dart';
 import '../../widgets/titlebar.dart';
@@ -15,34 +17,34 @@ class SettingPage extends StatelessWidget {
     final logic = Get.find<SettingLogic>();
     final options = <Option>[
       Option(
-        label: "暗色模式",
+        label: Trs.darkMode,
         svg: "assets/svg/lightbulb_line.svg",
         onTap: logic.onNightModeEdit,
       ),
       Option(
-        label: "多语言",
+        label: Trs.languageSetup,
         svg: "assets/svg/language_line.svg",
         onTap: logic.onLanguageEdit,
       ),
+      // Option(
+      //   label: "用户协议",
+      //   svg: "assets/svg/handshake_line.svg",
+      //   // onTap: AppNavigator.startSettingAccount,
+      // ),
+      // Option(
+      //   label: "隐私政策",
+      //   svg: "assets/svg/user-shield_line.svg",
+      //   // onTap: AppNavigator.startSettingAccount,
+      // ),
       Option(
-        label: "用户协议",
-        svg: "assets/svg/handshake_line.svg",
-        // onTap: AppNavigator.startSettingAccount,
-      ),
-      Option(
-        label: "隐私政策",
-        svg: "assets/svg/user-shield_line.svg",
-        // onTap: AppNavigator.startSettingAccount,
-      ),
-      Option(
-        label: "联系我们",
+        label: Trs.contactUs,
         svg: "assets/svg/comments_line.svg",
-        // onTap: AppNavigator.startSettingAccount,
+        onTap: AppNavigator.startConnect,
       ),
     ];
     return Scaffold(
       appBar: EnterpriseTitleBar.homeTitle(
-        title: "设置与信息",
+        title: Trs.settingsAndInformation,
       ),
       backgroundColor: ThemeUtils.backColor(),
       body: CustomScrollView(

@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../translations/translation_service.dart';
 import '../../widgets/smart_refresher.dart';
 import '../../widgets/titlebar.dart';
 
@@ -20,14 +21,13 @@ class InterestRatePage extends StatelessWidget {
       DropdownMenuItem<int>(
         value: null,
         child: Text(
-          "全部类型",
+          Trs.allDepositType,
           style: TextStyle(
             fontSize: 14.sp,
           ),
         ),
       )
     ];
-
     rateTypeItems.addAll(
       RateType.values
           .map((RateType item) => DropdownMenuItem<int>(
@@ -46,14 +46,13 @@ class InterestRatePage extends StatelessWidget {
       DropdownMenuItem<int>(
         value: null,
         child: Text(
-          "全部时长",
+          Trs.allDepositDuration,
           style: TextStyle(
             fontSize: 14.sp,
           ),
         ),
       )
     ];
-
     durationTypeItems.addAll(
       RateDuration.values
           .map((RateDuration item) => DropdownMenuItem<int>(
@@ -70,7 +69,7 @@ class InterestRatePage extends StatelessWidget {
 
     return Scaffold(
       appBar: EnterpriseTitleBar.homeTitle(
-        title: "利率排行",
+        title: Trs.interestRateRanking,
       ),
       backgroundColor: ThemeUtils.backColor(),
       // key: logic.scaffoldKey,
@@ -84,7 +83,7 @@ class InterestRatePage extends StatelessWidget {
                   Row(
                     children: [
                       DropDownButton(
-                        title: "类型",
+                        title: Trs.depositType,
                         items: rateTypeItems,
                         onChanged: (int? value) {
                           logic.rateType = value;
@@ -92,7 +91,7 @@ class InterestRatePage extends StatelessWidget {
                         },
                       ),
                       DropDownButton(
-                        title: "时长",
+                        title: Trs.depositDuration,
                         items: durationTypeItems,
                         onChanged: (int? value) {
                           logic.rateDuration = value;
@@ -111,7 +110,7 @@ class InterestRatePage extends StatelessWidget {
                         Expanded(
                           flex: 30,
                           child: Text(
-                            "银行",
+                            Trs.bank,
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                               fontSize: 14.sp,
@@ -121,7 +120,7 @@ class InterestRatePage extends StatelessWidget {
                         Expanded(
                           flex: 30,
                           child: Text(
-                            "类型",
+                            Trs.depositType,
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                               fontSize: 14.sp,
@@ -131,7 +130,7 @@ class InterestRatePage extends StatelessWidget {
                         Expanded(
                           flex: 20,
                           child: Text(
-                            "时间",
+                            Trs.depositDuration,
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                               fontSize: 14.sp,
@@ -141,7 +140,7 @@ class InterestRatePage extends StatelessWidget {
                         Expanded(
                           flex: 12,
                           child: Text(
-                            "利率",
+                            Trs.rate,
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                               fontSize: 14.sp,
@@ -214,7 +213,7 @@ class _DropDownButtonState extends State<DropDownButton> {
         buttonStyleData: ButtonStyleData(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           height: 50.h,
-          width: 140.w,
+          width: 160.w,
           decoration: BoxDecoration(
             color: ThemeUtils.backColor(),
           ),

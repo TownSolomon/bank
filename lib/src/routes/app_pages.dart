@@ -1,3 +1,5 @@
+import 'package:bank/src/pages/connect/connect_binding.dart';
+import 'package:bank/src/pages/connect/connect_view.dart';
 import 'package:bank/src/pages/home/home_view.dart';
 import 'package:get/get.dart';
 
@@ -18,6 +20,11 @@ class AppPages {
       name: AppRoutes.home,
       page: () => const HomePage(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.connect,
+      page: () => const ConnectPage(),
+      binding: ConnectBinding(),
     ),
   ];
 }

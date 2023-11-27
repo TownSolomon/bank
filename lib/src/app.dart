@@ -1,6 +1,7 @@
 import 'package:bank/src/routes/app_pages.dart';
 import 'package:bank/src/translations/translation_service.dart';
 import 'package:bank/src/utils/logger.dart';
+import 'package:bank/src/utils/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -38,7 +39,7 @@ class App extends StatelessWidget {
         supportedLocales: TranslationService.locales.values,
         theme: AppTheme.appLightThemeData,
         darkTheme: AppTheme.appDarkThemeData,
-        themeMode: ThemeMode.system,
+        themeMode: ThemeUtils.getThemeMode(),
         getPages: AppPages.routes,
         initialBinding: InitBinding(),
         initialRoute: AppRoutes.splash,

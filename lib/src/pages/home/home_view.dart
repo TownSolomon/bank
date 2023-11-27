@@ -1,6 +1,7 @@
 import 'package:bank/src/pages/bank/bank_view.dart';
 import 'package:bank/src/pages/interestrate/interestrate_view.dart';
 import 'package:bank/src/pages/setting/setting_view.dart';
+import 'package:bank/src/translations/translation_service.dart';
 import 'package:bank/src/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,15 +34,15 @@ class HomePage extends StatelessWidget {
                 index: logic.index.value,
                 items: [
                   BottomBarItem(
-                    label: "银行",
+                    label: Trs.bank,
                     onClick: (i) => logic.switchTab(i),
                   ),
                   BottomBarItem(
-                    label: "利率",
+                    label: Trs.rate,
                     onClick: (i) => logic.switchTab(i),
                   ),
                   BottomBarItem(
-                    label: "设置",
+                    label: Trs.setting,
                     onClick: (i) => logic.switchTab(i),
                   ),
                 ],

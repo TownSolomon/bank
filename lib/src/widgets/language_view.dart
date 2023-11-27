@@ -1,4 +1,4 @@
-
+import 'package:bank/src/translations/translation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -16,7 +16,6 @@ class LanguageItem {
 }
 
 class LanguageAlert extends StatefulWidget {
-
   const LanguageAlert({
     Key? key,
   }) : super(key: key);
@@ -28,15 +27,15 @@ class LanguageAlert extends StatefulWidget {
 class _LanguageAlertState extends State<LanguageAlert> {
   final List<LanguageItem> items = [
     LanguageItem(
-      label: '跟随系统',
+      label: Trs.followSystem,
       value: 0,
     ),
     LanguageItem(
-      label: '英语',
+      label: Trs.english,
       value: 1,
     ),
     LanguageItem(
-      label: '中文',
+      label: Trs.chinese,
       value: 2,
     ),
   ];
@@ -52,35 +51,55 @@ class _LanguageAlertState extends State<LanguageAlert> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("多语言"),
+      title: Text(
+        Trs.languageSetup,
+        style: TextStyle(
+          fontSize: 14.sp,
+        ),
+      ),
       content: SizedBox(
         height: 250.h,
         width: 200.w,
         child: ListView(
           children: items
               .map((item) => RadioListTile<int>(
-            title: Text(item.label.tr),
-            value: item.value,
-            groupValue: selectedValue,
-            selected: selectedValue == item.value,
-            onChanged: (int? value) {
-              setState(() {
-                selectedValue = value;
-              });
-            },
-          ))
+                    title: Text(
+                      item.label.tr,
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                      ),
+                    ),
+                    value: item.value,
+                    groupValue: selectedValue,
+                    selected: selectedValue == item.value,
+                    onChanged: (int? value) {
+                      setState(() {
+                        selectedValue = value;
+                      });
+                    },
+                  ))
               .toList(),
         ),
       ),
       actions: <Widget>[
         TextButton(
-          child: Text("取消"),
+          child: Text(
+            Trs.cancel,
+            style: TextStyle(
+              fontSize: 14.sp,
+            ),
+          ),
           onPressed: () {
             Get.back();
           },
         ),
         TextButton(
-          child: Text("确认"),
+          child: Text(
+            Trs.ok,
+            style: TextStyle(
+              fontSize: 14.sp,
+            ),
+          ),
           onPressed: () {
             Get.back(result: selectedValue);
           },

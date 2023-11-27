@@ -3,7 +3,30 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import 'data_persistence.dart';
+
 class ThemeUtils {
+  static ThemeMode getThemeMode() {
+    return getThemeModeByValue(DataPersistence.getNightMode());
+  }
+
+  static ThemeMode getThemeModeByValue(int? value) {
+    if (value == null) {
+      return ThemeMode.system;
+    }
+
+    switch (value) {
+      case 0:
+        return ThemeMode.system;
+      case 1:
+        return ThemeMode.light;
+      case 2:
+        return ThemeMode.dark;
+    }
+
+    return ThemeMode.system;
+  }
+
   static Color backColor() => Get.isDarkMode
       ? const Color.fromARGB(255, 25, 25, 25)
       : const Color.fromARGB(255, 255, 255, 255);

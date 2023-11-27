@@ -1,4 +1,5 @@
 import 'package:bank/src/pages/bank/bank_logic.dart';
+import 'package:bank/src/translations/translation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,23 +16,22 @@ class BankPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: ThemeUtils.backColor(),
       appBar: EnterpriseTitleBar.homeTitle(
-        title: "银行列表",
+        title: Trs.banks,
       ),
       // key: logic.scaffoldKey,
       body: NestedScrollView(
         floatHeaderSlivers: false,
         headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return [
-          ];
+          return [];
         },
         body: Obx(() => ObxSmartRefresher(
-          initialRefresh: true,
-          onRefresh: logic.onRefresh,
-          onLoading: logic.onLoading,
-          length: logic.list.length,
-          delegate: logic.delegate,
-          crossAxisCount: 1,
-        )),
+              initialRefresh: true,
+              onRefresh: logic.onRefresh,
+              onLoading: logic.onLoading,
+              length: logic.list.length,
+              delegate: logic.delegate,
+              crossAxisCount: 1,
+            )),
       ),
     );
   }

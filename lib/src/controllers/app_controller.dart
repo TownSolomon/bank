@@ -1,12 +1,14 @@
 import 'dart:ui';
 
-import 'package:bank/src/translations/translation_service.dart';
 import 'package:get/get.dart';
 
-class AppController extends GetxController {
+import '../commons/env.dart';
+import '../utils/data_persistence.dart';
 
+class AppController extends GetxController {
   Locale? getLocale() {
-    return TranslationService.fallbackLocale;
-    // return Get.locale;
+    var index = DataPersistence.getLanguage() ?? 0;
+    var locale = Env.languageMap[index];
+    return locale;
   }
 }
