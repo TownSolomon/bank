@@ -1,5 +1,7 @@
+import 'package:bank/src/pages/setting/setting_logic.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import '../../models/option.dart';
 import '../../utils/theme.dart';
 import '../../widgets/svg_picture.dart';
@@ -10,16 +12,17 @@ class SettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final logic = Get.find<SettingLogic>();
     final options = <Option>[
       Option(
         label: "暗色模式",
         svg: "assets/svg/lightbulb_line.svg",
-        // onTap: AppNavigator.startSettingAccount,
+        onTap: logic.onNightModeEdit,
       ),
       Option(
         label: "多语言",
         svg: "assets/svg/language_line.svg",
-        // onTap: AppNavigator.startSettingAccount,
+        onTap: logic.onLanguageEdit,
       ),
       Option(
         label: "用户协议",

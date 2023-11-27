@@ -4,6 +4,7 @@ import 'package:bank/src/app.dart';
 import 'package:bank/src/commons/config.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:sp_util/sp_util.dart';
 
 Future<void> main() async {
   runZonedGuarded(
@@ -17,6 +18,7 @@ Future<void> main() async {
         }
       };
       AppLifeCycleDelegate();
+      await SpUtil.getInstance();
       runApp(const App());
     },
     (Object error, StackTrace stackTrace) {

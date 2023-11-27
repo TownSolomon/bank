@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:dio/dio.dart' as dio;
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/foundation.dart';
 
