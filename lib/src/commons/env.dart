@@ -44,11 +44,6 @@ class Env {
   };
 }
 
-class CoreEnv {
-  static const api = 'https://bank.townsapi.com';
-  // static const api = 'http://172.26.202.119:8090';
-}
-
 class Ui {
   static const double width = 375.0;
   static const double height = 812.0;

@@ -24,7 +24,6 @@ class AppLifeCycleDelegate with WidgetsBindingObserver {
       AppLifeCycleDelegate._inital();
 
   AppLifeCycleDelegate._inital() {
-    print("初始化生命周期代理");
     WidgetsBinding.instance.addObserver(this);
   }
 
@@ -35,8 +34,6 @@ class AppLifeCycleDelegate with WidgetsBindingObserver {
   @override
   void didChangePlatformBrightness() {
     super.didChangePlatformBrightness();
-    print("手机主题发生变化");
-    //强制触发 build
     Future.delayed(const Duration(milliseconds: 250), () {
       Get.forceAppUpdate();
       SystemChrome.setSystemUIOverlayStyle(ThemeUtils.systemUiOverlayStyle());

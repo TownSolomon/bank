@@ -1,6 +1,12 @@
+import 'dart:ui';
+
+import 'package:bank/src/apis/interceptor/signature_interceptor.dart';
+import 'package:bank/src/commons/secret.dart';
+import 'package:bank/src/utils/data_persistence.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
 
 import '../commons/env.dart';
 
@@ -12,7 +18,6 @@ mixin Client {
     policy: CachePolicy.request,
     maxStale: const Duration(days: 1),
     priority: CachePriority.normal,
-    cipher: null,
     keyBuilder: CacheOptions.defaultCacheKeyBuilder,
     allowPostMethod: false,
   );
@@ -23,20 +28,22 @@ mixin Client {
 
   static Dio getClient() {
     Dio dio = Dio()
-      ..options.baseUrl = CoreEnv.api
+      ..options.baseUrl = Secret.baseUrl
       ..options.headers = {
-        "Client-Domain": CoreEnv.api,
-        // "Client-Id": deviceId,
+        "Client-Id": DataPersistence.getClientId() ?? "",
         "Client-Platform": Env.platform.label,
+        "Client-Region": Env.region.label,
+        "Client-Timezone": DataPersistence.getTimezone() ?? "",
         "Client-Version-Code": Env.versionCode,
         "Client-version-Name": Env.versionName,
       }
-      ..interceptors.add(DioCacheInterceptor(options: cacheOptions));
+      ..interceptors.add(DioCacheInterceptor(options: cacheOptions))
+      ..interceptors.add(SignatureInterceptor());
 
     if (kDebugMode) {
       dio.interceptors.add(LogInterceptor(
-        responseBody: true,
         requestBody: true,
+        responseBody: true,
       ));
     }
 
