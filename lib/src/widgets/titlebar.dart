@@ -146,8 +146,9 @@ class EnterpriseTitleBar extends StatelessWidget
                                 leftTile,
                                 style: ThemeUtils.appBarTitleTextStyle(),
                               )
-                            : const SvgIcon(
-                                assetName: "assets/svg/arrow_left_line.svg",
+                            : SvgIcon(
+                                assetName: "assets/svg/angle-left_line.svg",
+                                color: ThemeUtils.themeColor(),
                               ),
                       ),
                     ),

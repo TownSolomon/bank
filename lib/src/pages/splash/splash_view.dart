@@ -5,11 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 class SplashPage extends StatelessWidget {
-  const SplashPage({super.key});
+  SplashPage({super.key});
+
+  final logic = Get.find<SplashLogic>();
 
   @override
   Widget build(BuildContext context) {
-    final logic = Get.find<SplashLogic>();
     return Scaffold(
       body: Stack(
         children: [

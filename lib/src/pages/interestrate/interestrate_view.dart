@@ -1,6 +1,7 @@
 import 'package:bank/src/enums/bank.dart';
 import 'package:bank/src/pages/interestrate/interestrate_logic.dart';
 import 'package:bank/src/utils/theme.dart';
+import 'package:bank/src/widgets/svg_picture.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -22,8 +23,11 @@ class InterestRatePage extends StatelessWidget {
         value: null,
         child: Text(
           Trs.allDepositType,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
             fontSize: 14.sp,
+            color: ThemeUtils.themeColor(),
           ),
         ),
       )
@@ -34,8 +38,11 @@ class InterestRatePage extends StatelessWidget {
                 value: item.value,
                 child: Text(
                   item.label.tr,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 14.sp,
+                    color: ThemeUtils.themeColor(),
                   ),
                 ),
               ))
@@ -47,8 +54,11 @@ class InterestRatePage extends StatelessWidget {
         value: null,
         child: Text(
           Trs.allDepositDuration,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
             fontSize: 14.sp,
+            color: ThemeUtils.themeColor(),
           ),
         ),
       )
@@ -59,8 +69,11 @@ class InterestRatePage extends StatelessWidget {
                 value: item.value,
                 child: Text(
                   item.label.tr,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: 14.sp,
+                    color: ThemeUtils.themeColor(),
                   ),
                 ),
               ))
@@ -100,6 +113,7 @@ class InterestRatePage extends StatelessWidget {
                       ),
                     ],
                   ),
+                  // const Divider(),
                   Container(
                     margin: EdgeInsets.symmetric(
                       vertical: 10.h,
@@ -198,8 +212,11 @@ class _DropDownButtonState extends State<DropDownButton> {
         isExpanded: true,
         hint: Text(
           widget.title,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
           style: TextStyle(
-            fontSize: 13.sp,
+            fontSize: 14.sp,
+            color: ThemeUtils.themeColor(),
           ),
         ),
         items: widget.items,
@@ -221,6 +238,17 @@ class _DropDownButtonState extends State<DropDownButton> {
         alignment: AlignmentDirectional.center,
         menuItemStyleData: MenuItemStyleData(
           height: 50.h,
+        ),
+        iconStyleData: IconStyleData(
+          iconSize: 35.r,
+          icon: SvgIcon(
+            assetName: "assets/svg/angle-down_line.svg",
+            color: ThemeUtils.themeColor(),
+          ),
+          openMenuIcon: SvgIcon(
+            assetName: "assets/svg/angle-up_line.svg",
+            color: ThemeUtils.themeColor(),
+          ),
         ),
       ),
     );

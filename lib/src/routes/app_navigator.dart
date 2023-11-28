@@ -10,6 +10,6 @@ class AppNavigator {
 
   /// 联系我们页面
   static void startConnect() {
-    Get.offAllNamed(AppRoutes.connect);
+    Get.toNamed(AppRoutes.connect);
   }
 }

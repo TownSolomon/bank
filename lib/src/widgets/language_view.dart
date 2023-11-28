@@ -1,4 +1,5 @@
 import 'package:bank/src/translations/translation_service.dart';
+import 'package:bank/src/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -72,6 +73,7 @@ class _LanguageAlertState extends State<LanguageAlert> {
                     value: item.value,
                     groupValue: selectedValue,
                     selected: selectedValue == item.value,
+                    activeColor: ThemeUtils.themeColor(),
                     onChanged: (int? value) {
                       setState(() {
                         selectedValue = value;
@@ -87,6 +89,7 @@ class _LanguageAlertState extends State<LanguageAlert> {
             Trs.cancel,
             style: TextStyle(
               fontSize: 14.sp,
+              color: ThemeUtils.themeColor(),
             ),
           ),
           onPressed: () {
@@ -98,6 +101,7 @@ class _LanguageAlertState extends State<LanguageAlert> {
             Trs.ok,
             style: TextStyle(
               fontSize: 14.sp,
+              color: ThemeUtils.themeColor(),
             ),
           ),
           onPressed: () {

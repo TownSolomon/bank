@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../utils/data_persistence.dart';
+import '../utils/theme.dart';
 
 class NightModeItem {
   int value;
@@ -72,6 +73,7 @@ class _NightModeAlertState extends State<NightModeAlert> {
                       ),
                       value: item.value,
                       groupValue: selectedValue,
+                      activeColor: ThemeUtils.themeColor(),
                       selected: selectedValue == item.value,
                       onChanged: (int? value) {
                         setState(() {
@@ -88,6 +90,7 @@ class _NightModeAlertState extends State<NightModeAlert> {
               Trs.cancel,
               style: TextStyle(
                 fontSize: 14.sp,
+                color: ThemeUtils.themeColor(),
               ),
             ),
             onPressed: () {
@@ -99,6 +102,7 @@ class _NightModeAlertState extends State<NightModeAlert> {
               Trs.ok,
               style: TextStyle(
                 fontSize: 14.sp,
+                color: ThemeUtils.themeColor(),
               ),
             ),
             onPressed: () {

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../enums/bank.dart';
+import '../utils/theme.dart';
 
 class Bank extends StatelessWidget {
   final BankModel bankModel;
@@ -72,6 +73,7 @@ class Bank extends StatelessWidget {
       appBar: EnterpriseTitleBar.back(
         title: bankModel.label,
       ),
+      backgroundColor: ThemeUtils.backColor(),
       body: CustomScrollView(
         slivers: slivers,
       ),

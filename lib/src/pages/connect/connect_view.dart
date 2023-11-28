@@ -26,14 +26,10 @@ class ConnectPage extends StatelessWidget {
         onTap: () => launchUrlString("mailto:townsworlds@gmail.com"),
       ),
       Option(
-        label: Trs.wechat,
-        subtitle: "微信搜索townsworld",
-        onTap: () => launchUrlString("https://towns.world"),
-      ),
-      Option(
         label: Trs.xhs,
         subtitle: "小红书搜索唐思忆",
-        onTap: () => launchUrlString("https://www.xiaohongshu.com/user/profile/59d5c617de5fb4309d676210"),
+        onTap: () => launchUrlString(
+            "https://www.xiaohongshu.com/user/profile/59d5c617de5fb4309d676210"),
       ),
       Option(
         label: Trs.douyin,
@@ -51,6 +47,12 @@ class ConnectPage extends StatelessWidget {
         ),
       );
     }
+    options.add(
+      Option(
+        label: Trs.wechat,
+        subtitle: "微信搜索townsworld",
+      ),
+    );
 
     return Scaffold(
       appBar: EnterpriseTitleBar.back(
@@ -82,10 +84,15 @@ class ConnectPage extends StatelessWidget {
                           fontWeight: FontWeight.normal,
                         ),
                       ),
-                      trailing: SvgButton(
-                        assetName: 'assets/svg/angle_right_line.svg',
-                        onTap: option.onTap,
-                      ),
+                      trailing: option.onTap == null
+                          ? Container(
+                        width: 30.w,
+                      )
+                          : SvgButton(
+                              assetName: 'assets/svg/angle-right_line.svg',
+                              color: ThemeUtils.themeColor(),
+                              onTap: option.onTap,
+                            ),
                     ),
                     const Divider(),
                   ],
